@@ -1,7 +1,7 @@
 % File src/R/man/logging.setLevel.Rd
 
-\name{logging.setLevel}
-\alias{logging.setLevel}
+\name{setLevel}
+\alias{setLevel}
 \title{set logging.level for the named logger}
 \description{
 
@@ -9,7 +9,7 @@
 
 }
 \usage{
-logging.setLevel(name, level)
+setLevel(name, level)
 }
 \arguments{
   \item{name}{the name of the logger.}

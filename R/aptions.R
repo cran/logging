@@ -19,7 +19,7 @@
 ##
 ## Usage      : library(logging)
 ##
-## $Id: aptions.R 9003 2010-01-15 13:00:34Z Mario $
+## $Id: aptions.R 9806 2010-03-09 07:49:46Z Mario $
 ##
 ## initial programmer :  Brian Lee Yung Rowe
 ##
@@ -70,29 +70,4 @@ options.manager <- function(option.name, defaults=NULL)
 
     invisible()
   }
-}
-
-# Reset options for a given option set
-reset.options <- function(option.name, ...) UseMethod('reset.options')
-reset.options.default <- function(option.name, ...)
-  reset.options.character(deparse(substitute(option.name)), ...)
-
-reset.options.character <- function(option.name, ...)
-{
-  my.options <- list()
-  my.options[[option.name]] <- NA
-  options(my.options)
-
-  args <- list(...)
-  if (length(args) > 0)
-  {
-    ks <- names(args)
-    vs <- sapply(args, '[')
-    kvs <- paste(ks,vs, sep='=')
-    line <- paste(kvs, collapse=',')
-
-    exp <- parse(text=paste('new.options <- ',option.name,'(',line,')',sep=''))
-    eval(exp)
-  }
-  invisible()
 }

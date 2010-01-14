@@ -1,9 +1,9 @@
 % File src/R/man/logging.handler-actions.Rd
 
-\name{logging.handler-actions}
-\alias{logging.handler-actions}
-\alias{logging.handler.file}
-\alias{logging.handler.stdout}
+\name{handler-actions}
+\alias{handler-actions}
+\alias{writeToFile}
+\alias{writeToConsole}
 \title{predefined handler actions}
 \description{
   
@@ -13,8 +13,8 @@
 
 }
 \usage{
-logging.handler.file(msg, handler)
-logging.handler.stdout(msg, handler)
+writeToFile(msg, handler)
+writeToConsole(msg, handler)
 }
 \arguments{
   \item{msg}{the final formatted message to be output}

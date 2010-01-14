@@ -19,7 +19,7 @@
 ##
 ## Usage      : library(logging)
 ##
-## $Id: logger.R 9100 2010-01-22 10:21:15Z Mario $
+## $Id: logger.R 9806 2010-03-09 07:49:46Z Mario $
 ##
 ## initial programmer :  Mario Frasca
 ## based on:             Brian Lee Yung Rowe's futile library
@@ -28,15 +28,15 @@
 ##
 
 ## TODO: these constants must be exported and documented
-logging.levels <- c(0, 10, 20, 30, 30, 40, 50, 50)
-names(logging.levels) <- c('NOTSET', 'DEBUG', 'INFO', 'WARNING', 'WARN', 'ERROR', 'CRITICAL', 'FATAL')
+levels <- c(0, 1, 4, 7, 10, 20, 30, 40, 50, 50)
+names(levels) <- c('NOTSET', 'FINEST', 'FINER', 'FINE', 'DEBUG', 'INFO', 'WARN', 'ERROR', 'CRITICAL', 'FATAL')
 
 ## main log function, used by all other ones
 ## (entry points for messages)
-logging.log <- function(level, msg, ..., logger='')
+levellog <- function(level, msg, ..., logger='')
 {
   ## get the logger of which we have the name.
-  config <- logging.getLogger(logger)
+  config <- getLogger(logger)
   if (level < config$level) return(invisible())
 
   ## what is the record to be logged?
@@ -47,59 +47,77 @@ logging.log <- function(level, msg, ..., logger='')
 
   record$timestamp <- sprintf("%s", Sys.time())
   record$logger <- logger
-  record$level <- names(which(logging.levels == level)[1])
-  if(is.na(record$level))
-    record$level <- paste("NumericLevel(", level, ")", sep='')
+  record$level <- level
+  record$levelname <- names(which(levels == level)[1])
+  if(is.na(record$levelname))
+    record$levelname <- paste("NumericLevel(", level, ")", sep='')
 
-  ## pass the record to all handlers associated to logger
+  ## invoke the action of all handlers associated to logger
   for (handler in config$handlers) {
     if (level >= handler$level) {
-      handler$fun(handler$formatter(record), handler)
+      handler$action(handler$formatter(record), handler)
     }
   }
 
   ## if not at root level, check the parent logger
   if(logger != ''){
-    parts <- strsplit(logger, '\\.')[[1]]
-    removed <- parts[-length(parts)]
+    parts <- strsplit(logger, '\\.')[[1]] # split the name on the '.'
+    removed <- parts[-length(parts)] # except the last item
     parent <- paste(removed, collapse='.')
-    logging.log(level, msg, ..., logger=parent)
+    levellog(level, msg, ..., logger=parent)
   }
   
   invisible()
 }
 
-## using logging.log
-logging.debug <- function(msg, ..., logger='')
+## using log
+debug <- function(msg, ..., logger='')
 {
-  logging.log(logging.levels['DEBUG'], msg, ..., logger=logger)
+  levellog(levels['DEBUG'], msg, ..., logger=logger)
   invisible()
 }
 
-## using logging.log
-logging.info <- function(msg, ..., logger='')
+finest <- function(msg, ..., logger='')
 {
-  logging.log(logging.levels['INFO'], msg, ..., logger=logger)
+  levellog(levels['FINEST'], msg, ..., logger=logger)
   invisible()
 }
 
-## using logging.log
-logging.warn <- function(msg, ..., logger='')
+finer <- function(msg, ..., logger='')
 {
-  logging.log(logging.levels['WARN'], msg, ..., logger=logger)
-  invisible()
-}
-logging.warning <- logging.warn
-
-## using logging.log
-logging.error <- function(msg, ..., logger='')
-{
-  logging.log(logging.levels['ERROR'], msg, ..., logger=logger)
+  levellog(levels['FINER'], msg, ..., logger=logger)
   invisible()
 }
 
-## set properties of a logger
-updateLogger <- function(name, ...) {
+fine <- function(msg, ..., logger='')
+{
+  levellog(levels['FINE'], msg, ..., logger=logger)
+  invisible()
+}
+
+## using log
+info <- function(msg, ..., logger='')
+{
+  levellog(levels['INFO'], msg, ..., logger=logger)
+  invisible()
+}
+
+## using log
+warn <- function(msg, ..., logger='')
+{
+  levellog(levels['WARN'], msg, ..., logger=logger)
+  invisible()
+}
+
+## using log
+error <- function(msg, ..., logger='')
+{
+  levellog(levels['ERROR'], msg, ..., logger=logger)
+  invisible()
+}
+
+## set properties of a logger or a handler
+updateOptions <- function(name, ...) {
   if(name=='')
     name <- 'logging.ROOT'
   else
@@ -107,7 +125,7 @@ updateLogger <- function(name, ...) {
 
   config <- list(...)
   if (! 'level' %in% config)
-    config$level = logging.levels['INFO']
+    config$level = levels['INFO']
 
   exp <- parse(text=paste('logging.options(',name,' = config)', sep=''))
   eval(exp)
@@ -115,7 +133,7 @@ updateLogger <- function(name, ...) {
 
 ## Get a specific logger configuration
 ## remember: you can't alter an object in R
-logging.getLogger <- function(name, ...)
+getLogger <- function(name='', ...)
 {
   if(name=='')
     fullname <- 'logging.ROOT'
@@ -123,21 +141,21 @@ logging.getLogger <- function(name, ...)
     fullname <- paste('logging.ROOT', name, sep='.')
 
   if (! fullname %in% names(logging.options())){
-    updateLogger(name, ...)
+    updateOptions(name, ...)
   }
 
   logging.options()[[fullname]]
 }
 
 ## set the level of a handler or a logger
-logging.setLevel <- function(name, level)
+setLevel <- function(name, level)
 {
-  updateLogger(name, level=level)
+  updateOptions(name, level=level)
 }
 
 #################################################################################
 
-## predefined handlers
+## sample actions for handlers
 
 ## a handler is a function that accepts a logging.record and a
 ## configuration.
@@ -150,16 +168,16 @@ logging.setLevel <- function(name, level)
 ## with level equal or higher than that are taken into account), an
 ## action (writing the formatted record to a stream).
 
-logging.handler.stdout <- function(msg, handler)
+writeToConsole <- function(msg, handler)
 {
   cat(msg)
 }
 
-logging.handler.file <- function(msg, handler)
+writeToFile <- function(msg, handler)
 {
   if (! 'file' %in% names(handler))
   {
-    cat("Required argument 'file' is missing.\n")
+    cat("handler with writeToFile 'action' must have a 'file' element.\n")
     return()
   }
   cat(msg, file=handler$file, append=TRUE)
@@ -169,15 +187,15 @@ logging.handler.file <- function(msg, handler)
 
 ## the single predefined formatter
 
-logging.formatter.default <- function(record) {
-  paste(record$timestamp, record$level, record$msg, '\n')
+defaultFormat <- function(record) {
+  paste(record$timestamp, record$levelname, record$msg, '\n')
 }
 
 #################################################################################
 
-logging.BasicConfig <- function() {
-  updateLogger('', level=logging.levels['INFO'])
-  logging.addHandler(logging.handler.stdout, name='basic.stdout')
+basicConfig <- function() {
+  updateOptions('', level=levels['INFO'])
+  addHandler(writeToConsole, name='basic.stdout')
   invisible()
 }
 
@@ -185,25 +203,25 @@ logging.BasicConfig <- function() {
 ## The following values need to be provided:
 ##   name - the name of the logger to which the logger is to be attached
 ##   level - log level for new handler
-##   fun - the implementation for the handler. Either a function or a name of
+##   action - the implementation for the handler. Either a function or a name of
 ##     a function
 ##   ... options to be stored as fields of new handler
-logging.addHandler <- function(name, fun, ..., level=20, logger='', formatter=logging.formatter.default)
+addHandler <- function(name, action, ..., level=20, logger='', formatter=defaultFormat)
 {
-  handlers <- logging.getLogger(logger)[['handlers']]
+  handlers <- getLogger(logger)[['handlers']]
 
-  handler <- list(level=level, fun=fun, formatter=formatter, ...)
+  handler <- list(level=level, action=action, formatter=formatter, ...)
   handlers[name] <- list(handler) # this does not alter the original list
 
-  updateLogger(logger, handlers=handlers) # this replaces the original list
+  updateOptions(logger, handlers=handlers) # this replaces the original list
   
   invisible()
 }
 
-logging.removeHandler <- function(name, logger='') {
-  handlers <- logging.getLogger(logger)[['handlers']]
+removeHandler <- function(name, logger='') {
+  handlers <- getLogger(logger)[['handlers']]
   to.keep <- !(names(handlers) == name)
-  updateLogger(logger, handlers=handlers[to.keep])
+  updateOptions(logger, handlers=handlers[to.keep])
   invisible()
 }
 
@@ -214,4 +232,4 @@ logging.removeHandler <- function(name, logger='') {
 ## The logger options manager
 logging.options <- options.manager('logging.options')
 
-logging.getLogger('', handlers=NULL, level=0)
+getLogger('', handlers=NULL, level=0)

@@ -1,7 +1,7 @@
 % File src/R/man/logging.getLogger.Rd
 
-\name{logging.getLogger}
-\alias{logging.getLogger}
+\name{getLogger}
+\alias{getLogger}
 \title{set defaults and get current values for the named logger}
 \description{
 
@@ -11,7 +11,7 @@
 
 }
 \usage{
-logging.getLogger(name, ...)
+getLogger(name, ...)
 }
 \arguments{
   \item{name}{the name of the logger}

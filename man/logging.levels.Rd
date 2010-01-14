@@ -1,7 +1,7 @@
 % File src/R/man/logging.levels.Rd
 
-\name{logging.levels}
-\alias{logging.levels}
+\name{levels}
+\alias{levels}
 \title{the logging levels, names and values}
 \description{
   

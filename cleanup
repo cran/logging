@@ -2,12 +2,12 @@
 
 rm ../$(basename $(pwd))*.tar.gz
 
-[[ $(svnversion .) =~ ([0-9]+):?([0-9]*)([A-Z]*) ]]
+[[ $(svnversion -c .) =~ ([0-9]+):?([0-9]*)([A-Z]*) ]]
 LOW=${BASH_REMATCH[1]}
 HIGH=${BASH_REMATCH[2]:-$LOW}
 FLAGS=${BASH_REMATCH[3]:-''}
 
-[ $LOW -ne $HIGH ] && echo "- mixed revisions in local copy (low:high=$LOW:$HIGH)"
+# [ $LOW -ne $HIGH ] && echo "- mixed revisions in local copy (low:high=$LOW:$HIGH)"
 [ "$FLAGS" != "" ] && echo "- local copy has flags: $FLAGS"
 echo "- highest revision in local copy: $HIGH"
 

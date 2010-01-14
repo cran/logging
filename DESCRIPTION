@@ -1,5 +1,5 @@
 Package: logging
-Version: 0.2-9100
+Version: 0.3-9809
 Date: 2010-01-14
 Title: a tentative logging package
 Author: Mario Frasca <mariotomo@gmail.com>
@@ -7,6 +7,6 @@ Maintainer: Mario Frasca <mario.frasca@nelen-schuurmans.nl>
 Description: a logging package emulating the python logging package.
 License: GPL (>= 2)
 Depends: R (>= 2.9.2)
-Packaged: 2010-01-22 10:24:23 UTC; mario
+Packaged: 2010-03-26 10:00:14 UTC; mario
 Repository: CRAN
-Date/Publication: 2010-01-22 12:43:01
+Date/Publication: 2010-03-26 11:17:16

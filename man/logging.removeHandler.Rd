@@ -1,7 +1,7 @@
 % File src/R/man/logging.removeHandler.Rd
 
-\name{logging.removeHandler}
-\alias{logging.removeHandler}
+\name{removeHandler}
+\alias{removeHandler}
 \title{remove a handler from a logger}
 \description{
   
@@ -9,7 +9,7 @@
   
 }
 \usage{
-logging.removeHandler(name, logger='')
+removeHandler(name, logger='')
 }
 \arguments{
   \item{name}{the name of the handler}

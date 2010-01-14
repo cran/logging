@@ -1,7 +1,7 @@
 % File src/R/man/logging.BasicConfig.Rd
 
-\name{logging.BasicConfig}
-\alias{logging.BasicConfig}
+\name{basicConfig}
+\alias{basicConfig}
 \title{bootstrapping the logging package}
 \description{
 
@@ -10,12 +10,13 @@
 
 }
 \usage{
-logging.BasicConfig()
+basicConfig()
 }
 \arguments{
 }
 \examples{
-logging.BasicConfig()
-logging.debug("not shown, basic is INFO")
-logging.warn("shown and timestamped")
+library(logging)
+basicConfig()
+debug("not shown, basic is INFO")
+warn("shown and timestamped")
 }
