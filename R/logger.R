@@ -19,7 +19,7 @@
 ##
 ## Usage      : library(logging)
 ##
-## $Id: logger.R 9003 2010-01-15 13:00:34Z Mario $
+## $Id: logger.R 9100 2010-01-22 10:21:15Z Mario $
 ##
 ## initial programmer :  Mario Frasca
 ## based on:             Brian Lee Yung Rowe's futile library
@@ -192,7 +192,7 @@ logging.addHandler <- function(name, fun, ..., level=20, logger='', formatter=lo
 {
   handlers <- logging.getLogger(logger)[['handlers']]
 
-  handler <- list(level=level, fun=fun, formatter=formatter)
+  handler <- list(level=level, fun=fun, formatter=formatter, ...)
   handlers[name] <- list(handler) # this does not alter the original list
 
   updateLogger(logger, handlers=handlers) # this replaces the original list
