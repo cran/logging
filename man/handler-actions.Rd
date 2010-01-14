@@ -1,4 +1,5 @@
 % File src/R/man/logging.handler-actions.Rd
+% $Id: handler-actions.Rd 11 2010-04-03 18:54:20Z mariotomo $
 
 \name{handler-actions}
 \alias{handler-actions}

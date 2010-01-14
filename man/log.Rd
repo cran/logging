@@ -1,15 +1,16 @@
-% File src/R/man/logging.log.Rd
+% File src/R/man/log.Rd
+% $Id: log.Rd 11 2010-04-03 18:54:20Z mariotomo $
 
 \name{levellog}
 \alias{levellog}
-\alias{finest}
-\alias{finer}
-\alias{fine}
-\alias{debug}
-\alias{info}
-\alias{warn}
-\alias{warning}
-\alias{error}
+\alias{logfinest}
+\alias{logfiner}
+\alias{logfine}
+\alias{logdebug}
+\alias{loginfo}
+\alias{logwarn}
+\alias{logwarning}
+\alias{logerror}
 \title{entry points for logging actions}
 \description{
   generate a log record and pass it to the logging system.
@@ -19,10 +20,10 @@
 
 }
 \usage{
-debug(msg, ..., logger='')
-info(msg, ..., logger='')
-warn(msg, ..., logger='')
-error(msg, ..., logger='')
+logdebug(msg, ..., logger='')
+loginfo(msg, ..., logger='')
+logwarn(msg, ..., logger='')
+logerror(msg, ..., logger='')
 
 levellog(level, msg, ..., logger='')
 }

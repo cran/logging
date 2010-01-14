@@ -1,4 +1,5 @@
-% File src/R/man/logging.BasicConfig.Rd
+% File src/R/man/basicConfig.Rd
+% $Id: basicConfig.Rd 11 2010-04-03 18:54:20Z mariotomo $
 
 \name{basicConfig}
 \alias{basicConfig}
@@ -12,11 +13,9 @@
 \usage{
 basicConfig()
 }
-\arguments{
-}
 \examples{
 library(logging)
 basicConfig()
-debug("not shown, basic is INFO")
-warn("shown and timestamped")
+logdebug("not shown, basic is INFO")
+logwarn("shown and timestamped")
 }

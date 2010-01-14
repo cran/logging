@@ -1,4 +1,5 @@
-% File src/R/man/logging.removeHandler.Rd
+% File src/R/man/removeHandler.Rd
+% $Id: removeHandler.Rd 11 2010-04-03 18:54:20Z mariotomo $
 
 \name{removeHandler}
 \alias{removeHandler}

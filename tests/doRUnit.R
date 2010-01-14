@@ -1,5 +1,7 @@
 #!/usr/bin/Rscript
 ## unit tests will not be done if RUnit is not available
+## $Id: doRUnit.R 11 2010-04-03 18:54:20Z mariotomo $
+
 if(require("RUnit", quietly=TRUE)) {
 
   ## --- Setup ---

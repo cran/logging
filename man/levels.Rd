@@ -1,7 +1,8 @@
-% File src/R/man/logging.levels.Rd
+% File src/R/man/levels.Rd
+% $Id: levels.Rd 11 2010-04-03 18:54:20Z mariotomo $
 
-\name{levels}
-\alias{levels}
+\name{loglevels}
+\alias{loglevels}
 \title{the logging levels, names and values}
 \description{
   

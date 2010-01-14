@@ -1,4 +1,5 @@
-% File src/R/man/logging.addHandler.Rd
+% File src/R/man/addHandler.Rd
+% $Id: addHandler.Rd 11 2010-04-03 18:54:20Z mariotomo $
 
 \name{addHandler}
 \alias{addHandler}
