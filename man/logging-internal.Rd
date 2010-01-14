@@ -1,5 +1,5 @@
 % File src/R/man/logging-internal.Rd
-% $Id: logging-internal.Rd 11 2010-04-03 18:54:20Z mariotomo $
+% $Id: logging-internal.Rd 18 2010-04-08 09:44:43Z mariotomo $
 
 \name{logging-internal}
 \title{undocumented internal functions and variables}
@@ -9,3 +9,6 @@
 }
 \alias{SVNVERSION}
 \alias{SVNDATE}
+\alias{updateOptions}
+\alias{updateOptions.environment}
+\alias{levellog}

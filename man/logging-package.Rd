@@ -1,5 +1,5 @@
 % File src/R/man/logging-package.Rd
-% $Id: logging-package.Rd 11 2010-04-03 18:54:20Z mariotomo $
+% $Id: logging-package.Rd 34 2010-04-12 07:36:47Z mariotomo $
 
 \name{logging-package}
 \Rdversion{1.1}
@@ -61,15 +61,16 @@ lines on the console and just one line in the \code{sample.log} file.
 }
 \author{
   Mario Frasca <mariotomo@gmail.com>
-  
-  Brian Lee Yung Rowe <r@nurometic.com>
 
 Maintainer: Mario Frasca <mario.frasca@nelen-schuurmans.nl>
 }
 \references{
-the python logging module, at http://docs.python.org/library/logging.html
+  the python logging module: \url{http://docs.python.org/library/logging.html}
+
+  this package at r-forge: \url{http://logging.r-forge.r-project.org/}
 }
 \keyword{ package }
+
 \seealso{
-\code{\link[futile:futile-package]{http://cran.r-project.org/web/packages/futile/index.html}}
+  \code{\link[futile:futile-package]{http://cran.r-project.org/web/packages/futile/index.html}}
 }

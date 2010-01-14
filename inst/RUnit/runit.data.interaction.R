@@ -1,7 +1,7 @@
 require(RUnit)
 
 # test functions are called in lexicographic order.
-# $Id: runit.data.interaction.R 11 2010-04-03 18:54:20Z mariotomo $
+# $Id: runit.data.interaction.R 18 2010-04-08 09:44:43Z mariotomo $
 
 test.000.getLoggerWithoutInitializingDoesNotCrash <- function() {
   rootLogger <- getLogger("")
@@ -46,7 +46,7 @@ test.fineLevelsAreOrdered <- function() {
 
 test.canSetLoggerLevelByNamedValue <- function() {
   basicConfig()
-  setLevel('', logging:::loglevels['DEBUG'])
+  setLevel(logging:::loglevels['DEBUG'], '')
   rootLogger <- getLogger('')
   expect <- logging:::loglevels['DEBUG']
   checkEquals(rootLogger[['level']], expect)
@@ -54,7 +54,7 @@ test.canSetLoggerLevelByNamedValue <- function() {
 
 test.canSetLoggerLevelByName <- function() {
   basicConfig()
-  setLevel('', 'DEBUG')
+  setLevel('DEBUG', '')
   rootLogger <- getLogger('')
   expect <- logging:::loglevels['DEBUG']
   checkEquals(rootLogger[['level']], expect)
