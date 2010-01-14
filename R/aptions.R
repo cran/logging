@@ -13,18 +13,15 @@
 ## along with the nens libraray.  If not, see
 ## <http://www.gnu.org/licenses/>.
 ##
-## Library    : the nens R library
+## Library    : logging
 ##
-## Purpose    : most common functions
+## Purpose    : emulate the python standard logging package
 ##
-## Usage      : library(NenS)
+## Usage      : library(logging)
 ##
-## Project    : LizardScripter
+## $Id: aptions.R 9003 2010-01-15 13:00:34Z Mario $
 ##
-## $Id: aptions.R 8994 2010-01-15 07:52:42Z Mario $
-##
-## initial programmer :  Mario Frasca
-## based on:             Brian Lee Yung Rowe's futile library
+## initial programmer :  Brian Lee Yung Rowe
 ##
 ## initial date       :  20100105
 ##

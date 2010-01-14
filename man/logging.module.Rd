@@ -2,7 +2,7 @@
 
 \name{logging.module}
 \alias{logging.module}
-\title{the NenS logging module}
+\title{a logging module}
 \description{
   
   What you find here behaves similarly to what you also find in Python.
@@ -12,9 +12,10 @@
   Python's logging package, a simple logging.BasicConfig function to
   quickly put yourself in a usable situation...
 
-  still missing:
-  - removing handlers.
-  - setting a new formatter in an existing handler.
+  known to be missing:
+  \itemize{
+    \item{-}{setting a new formatter in an existing handler.}
+    }
   
 }
 

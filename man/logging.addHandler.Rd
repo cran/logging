@@ -24,7 +24,8 @@
   
 }
 \usage{
-logging.addHandler(name, fun, ..., level=20, logger='', formatter=logging.formatter.default)
+logging.addHandler(name, fun, ..., level=20, logger='',
+                   formatter=logging.formatter.default)
 }
 \arguments{
   \item{name}{the name of the handler}
