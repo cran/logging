@@ -1,5 +1,5 @@
 Package: logging
-Version: 0.6-85
+Version: 0.6-92
 Date: 2010-06-17
 Title: a tentative logging package
 Author: Mario Frasca <mariotomo@gmail.com>
@@ -10,6 +10,6 @@ Depends: R (>= 2.12.0), methods
 Suggests: svUnit
 Repository: CRAN
 Repository/R-Forge/Project: logging
-Repository/R-Forge/Revision: 88
-Date/Publication: 2011-08-10 10:13:48
-Packaged: 2011-08-03 21:09:54 UTC; rforge
+Repository/R-Forge/Revision: 92
+Date/Publication: 2011-09-14 12:36:11
+Packaged: 2011-09-05 21:11:34 UTC; rforge

@@ -19,7 +19,7 @@
 ##
 ## Usage      : library(logging)
 ##
-## $Id: logger.R 88 2011-08-03 13:56:53Z mariotomo $
+## $Id: logger.R 92 2011-09-05 08:13:27Z mariotomo $
 ##
 ## initial programmer :  Mario Frasca
 ## based on:             Brian Lee Yung Rowe's futile library
@@ -128,16 +128,10 @@ addHandler <- function(handler, ..., logger='') {
   ## will deparse the argument to 'handler', the formal name given
   ## here to the parameter
   if(is.character(handler)) {
-    params <- list(...)
-    if('action' %in% names(params))
-      action <- params[['action']]
-    else
-      action <- params[[1]]
+    logger$addHandler(handler, ...)
   } else {
-    action <- handler
-    handler <- deparse(substitute(handler))
+    logger$addHandler(handler=deparse(substitute(handler)), action=handler, ...)
   }
-  logger$addHandler(handler, action, ...)
 }
 
 removeHandler <- function(handler, logger='') {
