@@ -1,10 +1,11 @@
 require(svUnit)
 
 # test functions are called in lexicographic order.
-# $Id: runit.data.interaction.R 60 2011-02-02 09:47:04Z mariotomo $
+# $Id: runit.data.interaction.R 86 2011-08-03 13:16:48Z mariotomo $
 
 test.000.getLoggerWithoutInitializingDoesNotCrash <- function() {
   rootLogger <- getLogger("")
+  checkTrue(TRUE) # this is reached if the previous does not crash.
 }
 
 test.001.defaultLoggingLevelIsINFO <- function() {
@@ -21,13 +22,20 @@ test.002.canInitializeTwice <- function() {
   checkEquals(rootLogger[['level']], expect)
 }
 
-# end of functions that must be tested first
+test.003.sameNameMeansSameObject <- function() {
+  basicConfig()
+  root1 <- getLogger('abc')
+  root2 <- getLogger("abc")
+  checkIdentical(root1, root2)
+}
 
-test.canGetRootLoggerWithoutName <- function() {
+test.004.noNameMeansRoot <- function() {
   rootLogger1 <- getLogger('')
   rootLogger2 <- getLogger()
-  checkEquals(rootLogger1, rootLogger2)
+  checkIdentical(rootLogger1, rootLogger2)
 }
+
+# end of functions that must be tested first
 
 test.canFindLoggingLevels <- function() {
   checkEquals(logging:::loglevels[['NOTSET']], 0)
@@ -61,7 +69,7 @@ test.canSetLoggerLevelByName <- function() {
 }
 
 logged <- NULL
-mockAction <- function(msg, handler) {
+mockAction <- function(msg, handler, ...) {
   logged <<- c(logged, msg)
 }
 

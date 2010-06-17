@@ -1,5 +1,5 @@
 % File src/R/man/logging.handler-actions.Rd
-% $Id: handler-actions.Rd 11 2010-04-03 18:54:20Z mariotomo $
+% $Id: handler-actions.Rd 75 2011-04-27 07:22:02Z mariotomo $
 
 \name{handler-actions}
 \alias{handler-actions}
@@ -14,12 +14,13 @@
 
 }
 \usage{
-writeToFile(msg, handler)
-writeToConsole(msg, handler)
+writeToFile(msg, handler, ...)
+writeToConsole(msg, handler, ...)
 }
 \arguments{
   \item{msg}{the final formatted message to be output}
   \item{handler}{the handler owning this action}
+  \item{...}{placeholder: accept any extra future parameter.}
 }
 \details{
 
