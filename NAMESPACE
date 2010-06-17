@@ -1,4 +1,4 @@
-# $Id: NAMESPACE 18 2010-04-08 09:44:43Z mariotomo $
+# $Id: NAMESPACE 61 2011-02-11 11:34:43Z mariotomo $
 export(loglevels,
        logfinest,
        logfiner,
@@ -10,6 +10,7 @@ export(loglevels,
        levellog,
        basicConfig,
        getLogger,
+       Logger,
        removeHandler,
        removeHandler.default,
        removeHandler.character,

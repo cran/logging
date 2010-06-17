@@ -1,5 +1,5 @@
 % File src/R/man/log.Rd
-% $Id: log.Rd 18 2010-04-08 09:44:43Z mariotomo $
+% $Id: log.Rd 60 2011-02-02 09:47:04Z mariotomo $
 
 \name{loginfo}
 \alias{logfinest}
@@ -16,6 +16,8 @@
 
   a log record gets timestamped and will be independently formatted by
   each of the handlers handling it.
+
+  leading and trailing whitespace is stripped from the final message.
 
 }
 \usage{
