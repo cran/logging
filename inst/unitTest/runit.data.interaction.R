@@ -1,7 +1,7 @@
 require(svUnit)
 
 # test functions are called in lexicographic order.
-# $Id: runit.data.interaction.R 86 2011-08-03 13:16:48Z mariotomo $
+# $Id: runit.data.interaction.R 103 2013-04-08 09:57:38Z mariotomo $
 
 test.000.getLoggerWithoutInitializingDoesNotCrash <- function() {
   rootLogger <- getLogger("")
@@ -33,6 +33,22 @@ test.004.noNameMeansRoot <- function() {
   rootLogger1 <- getLogger('')
   rootLogger2 <- getLogger()
   checkIdentical(rootLogger1, rootLogger2)
+}
+
+test.500.basicConfigSetsLevelOfHandler <- function() {
+  logReset()
+  basicConfig('DEBUG')
+  rootLogger <- getLogger('')
+  expect <- logging:::loglevels['DEBUG']
+  current <- rootLogger$getHandler('basic.stdout')[['level']]
+  checkEquals(current, expect)
+  logReset()
+  basicConfig('ERROR')
+  rootLogger <- getLogger('')  ## needed, because `logReset` unlinked the old one
+  expect <- logging:::loglevels['ERROR']
+  current <- rootLogger$getHandler('basic.stdout')[['level']]
+  checkEquals(current, expect)
+  logReset()
 }
 
 # end of functions that must be tested first
@@ -69,7 +85,10 @@ test.canSetLoggerLevelByName <- function() {
 }
 
 logged <- NULL
+
 mockAction <- function(msg, handler, ...) {
+  if(length(list(...)) && 'dry' %in% names(list(...)))
+    return(TRUE)
   logged <<- c(logged, msg)
 }
 
@@ -121,7 +140,7 @@ test.recordIsEmitted.deepToRoot.DI.dropped <- function() {
   logReset()
   addHandler(mockAction, level='DEBUG', logger='')
   logged <<- NULL
-  setLevel('other.branch', 'INFO')
+  setLevel('INFO', 'other.branch')
   logdebug('test', logger='other.branch')
   loginfo('test', logger='other.branch')
   logerror('test', logger='other.branch')

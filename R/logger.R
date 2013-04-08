@@ -13,13 +13,15 @@
 ## along with the nens libraray.  If not, see
 ## <http://www.gnu.org/licenses/>.
 ##
+## Copyright © 2009-2012 by Mario Frasca
+##
 ## Library    : logging
 ##
 ## Purpose    : emulate the python standard logging package
 ##
 ## Usage      : library(logging)
 ##
-## $Id: logger.R 92 2011-09-05 08:13:27Z mariotomo $
+## $Id: logger.R 103 2013-04-08 09:57:38Z mariotomo $
 ##
 ## initial programmer :  Mario Frasca
 ## based on:             Brian Lee Yung Rowe's futile library
@@ -102,7 +104,7 @@ getLogger <- function(name='', ...)
 basicConfig <- function(level=20) {
   rootLogger <- getLogger()
   updateOptions(rootLogger, level=namedLevel(level))
-  rootLogger$addHandler('basic.stdout', writeToConsole)
+  rootLogger$addHandler('basic.stdout', writeToConsole, level=namedLevel(level))
   invisible()
 }
 

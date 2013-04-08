@@ -1,5 +1,5 @@
 % File src/R/man/getHandler.Rd
-% $Id: getHandler.Rd 26 2010-04-08 14:40:05Z mariotomo $
+% $Id: getHandler.Rd 95 2011-09-20 08:34:46Z mariotomo $
 
 \name{getHandler}
 \alias{getHandler}
@@ -22,4 +22,9 @@ getHandler(handler, logger='')
 \arguments{
   \item{handler}{the name of the handler, or its action.}
   \item{logger}{optional: the name of the logger.  defaults to the root logger.}
+}
+\examples{
+logReset()
+addHandler(writeToConsole)
+getHandler('writeToConsole')
 }

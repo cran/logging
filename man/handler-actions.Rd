@@ -1,5 +1,5 @@
 % File src/R/man/logging.handler-actions.Rd
-% $Id: handler-actions.Rd 75 2011-04-27 07:22:02Z mariotomo $
+% $Id: handler-actions.Rd 97 2011-09-21 14:23:04Z mariotomo $
 
 \name{handler-actions}
 \alias{handler-actions}
@@ -29,4 +29,9 @@ writeToConsole(msg, handler, ...)
   second parameter is useful so you can register the same handler action
   to handlers with different properties.
 
+}
+\examples{
+## define your own function and register it with a handler.
+## author is planning a sentry client function.  please send 
+## any interesting function you may have written!
 }

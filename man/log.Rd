@@ -1,5 +1,5 @@
 % File src/R/man/log.Rd
-% $Id: log.Rd 60 2011-02-02 09:47:04Z mariotomo $
+% $Id: log.Rd 96 2011-09-20 08:39:31Z mariotomo $
 
 \name{loginfo}
 \alias{logfinest}
@@ -32,4 +32,10 @@ logerror(msg, ..., logger='')
   \item{...}{if present, msg is interpreted as a format and the
     ... values are passed to it to form the actual message.}
   \item{logger}{the name of the logger to which we pass the record}
+}
+\examples{
+logReset()
+addHandler(writeToConsole)
+loginfo('this goes to console')
+logdebug('this stays silent')
 }

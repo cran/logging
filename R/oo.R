@@ -13,6 +13,8 @@
 ## along with the nens libraray.  If not, see
 ## <http://www.gnu.org/licenses/>.
 ##
+## Copyright © 2011, 2012 by Mario Frasca
+##
 ## Library    : logging
 ##
 ## Purpose    : the object oriented interface
@@ -123,7 +125,9 @@ Logger <- setRefClass("Logger",
                           assign('level', namedLevel(level), handlerEnv)
                           assign('formatter', formatter, handlerEnv)
                           removeHandler(handlerName)
-                          handlers[[handlerName]] <<- handlerEnv
+                          if(with(handlerEnv, action)(NA, handlerEnv, dry=TRUE) == TRUE) {
+                            handlers[[handlerName]] <<- handlerEnv
+                          }
                         },
 
                         finest = function(...) { log(loglevels['FINEST'], ...) },
