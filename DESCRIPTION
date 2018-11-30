@@ -1,18 +1,26 @@
 Package: logging
-Version: 0.7-103
-Date: 2013-04-08
-Title: R logging package
-Author: Mario Frasca <mariotomo@gmail.com>
-Maintainer: Mario Frasca <mariotomo@gmail.com>
-Description: logging is a pure R package that implements the ubiquitous
-        log4j package.
-License: GPL (>= 2)
-Depends: R (>= 2.12.0), methods
+Version: 0.8-104
+Title: R Logging Package
+Authors@R: c(
+  person("Mario", "Frasca", email = "mariotomo@gmail.com", role = c("aut")),
+  person("Walerian", "Sokolowski", email = "r-logging@wlogsolutions.com", role = c("cre"))
+  )
+Description: Pure R implementation of the ubiquitous log4j package. It offers hierarchic 
+  loggers, multiple handlers per logger, level based filtering, space handling in messages 
+  and custom formatting.
+URL: https://github.com/WLOGSolutions/r-logging
+BugReports: https://github.com/WLOGSolutions/r-logging/issues
+License: GPL-3
+Encoding: UTF-8
+Language: en-US
+Depends: R (>= 3.1.0)
+Imports: methods
 Suggests: svUnit, XML
-Repository: CRAN
-Repository/R-Forge/Project: logging
-Repository/R-Forge/Revision: 103
-Repository/R-Forge/DateTimeStamp: 2013-04-08 09:57:38
-Date/Publication: 2013-04-12 08:30:00
-Packaged: 2013-04-10 01:16:35 UTC; rforge
+RoxygenNote: 6.1.1
 NeedsCompilation: no
+Packaged: 2018-11-29 16:16:23 UTC; ws171913
+Author: Mario Frasca [aut],
+  Walerian Sokolowski [cre]
+Maintainer: Walerian Sokolowski <r-logging@wlogsolutions.com>
+Repository: CRAN
+Date/Publication: 2018-11-30 07:40:03 UTC

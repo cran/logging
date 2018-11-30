@@ -1,7 +1,7 @@
 require(svUnit)
 
 # test functions are called in lexicographic order.
-# $Id: runit.data.interaction.R 103 2013-04-08 09:57:38Z mariotomo $
+# $Id: runit.data.interaction.R 102 2012-04-19 11:28:35Z mariotomo $
 
 test.000.getLoggerWithoutInitializingDoesNotCrash <- function() {
   rootLogger <- getLogger("")
@@ -93,7 +93,8 @@ mockAction <- function(msg, handler, ...) {
 }
 
 mockFormatter <- function(record) {
-  paste(record$levelname, record$logger, record$msg, sep = ":")
+  msg <- trimws(record$msg)
+  paste(record$levelname, record$logger, msg, sep = ":")
 }
 
 test.recordIsEmitted.rootToRoot <- function() {

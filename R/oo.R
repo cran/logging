@@ -1,4 +1,4 @@
-##***********************************************************************
+##
 ## this program is free software: you can redistribute it and/or
 ## modify it under the terms of the GNU General Public License as
 ## published by the Free Software Foundation, either version 3 of the
@@ -13,17 +13,7 @@
 ## along with the nens libraray.  If not, see
 ## <http://www.gnu.org/licenses/>.
 ##
-## Copyright © 2011, 2012 by Mario Frasca
-##
-## Library    : logging
-##
-## Purpose    : the object oriented interface
-##
-## $Id: logger.R 75 2011-04-27 07:22:02Z mariotomo $
-##
-## initial programmer :  Mario Frasca
-##
-## initial date       :  20100105
+## Copyright (c) 2011-2013 by Mario Frasca
 ##
 
 Logger <- setRefClass("Logger",
@@ -32,7 +22,6 @@ Logger <- setRefClass("Logger",
                         handlers="list",
                         level="numeric"),
                       methods=list(
-
                         getParent = function() {
                           parts <- strsplit(name, '.', fixed=TRUE)[[1]] # split the name on the '.'
                           removed <- parts[-length(parts)] # except the last item
@@ -41,14 +30,15 @@ Logger <- setRefClass("Logger",
                         },
 
                         .logrecord = function(record) {
-                          ## 
-                          if (record$level >= level) 
-                            for (handler in handlers)
+                          if (record$level >= level) {
+                            for (handler in handlers) {
                               if (record$level >= with(handler, level)) {
                                 action <- with(handler, action)
                                 formatter <- with(handler, formatter)
                                 action(formatter(record), handler, record)
                               }
+                            }
+                          }
 
                           if(name != '') {
                             parentLogger <- getParent()
@@ -56,21 +46,41 @@ Logger <- setRefClass("Logger",
                           }
                           invisible(TRUE)
                         },
-                        
-                        log = function(msglevel, msg, ...) {
-                          if (msglevel < level) 
-                            return(invisible(FALSE))
 
+                        log = function(msglevel, msg, ...) {
+                          if (msglevel < level) {
+                            return(invisible(FALSE))
+                          }
                           ## fine, we create the record and pass it to all handlers attached to the
                           ## loggers from here up to the root.
                           record <- list()
 
-                          if (length(list(...)) > 0)
-                            msg <- do.call("sprintf", c(msg, lapply(list(...), function(x) if(length(x)==1) x else paste(x, collapse=','))))
+                          optargs <- list(...)
+                          if (is.character(msg)) {
+                            ## invoked as ("printf format", arguments_for_format)
+                            if (length(optargs) > 0)
+                              msg <- do.call("sprintf", c(msg, lapply(optargs, function(x) if(length(x)==1) x else paste(x, collapse=','))))
+                          } else {
+                            ## invoked as list of expressions
+                            ## this assumes that the function the user calls is two levels up, e.g.:
+                            ## loginfo -> .levellog -> logger$log
+                            ## levellog -> .levellog -> logger$log
+                            external.call <- sys.call(-2)
+                            external.fn <- eval(external.call[[1]])
+                            matched.call <- match.call(external.fn, external.call)
+                            matched.call <- matched.call[-1]
+                            matched.call.names <- names(matched.call)
 
-                          ## strip leading and trailing whitespace from the final message.
-                          msg <- sub("[[:space:]]+$", '', msg)
-                          msg <- sub("^[[:space:]]+", '', msg)
+                            ## We are interested only in the msg and ... parameters,
+                            ## i.e. in msg and all parameters not explicitly declared
+                            ## with the function
+                            is.output.param <- matched.call.names == "msg" |
+                              !(matched.call.names %in% c(setdiff(names(formals(external.fn)), "...")))
+
+                            label <- lapply(matched.call[is.output.param], deparse)
+                            msg <- sprintf("%s: %s", label, c(msg, optargs))
+                          }
+
                           record$msg <- msg
 
                           record$timestamp <- sprintf("%s", Sys.time())
@@ -79,7 +89,6 @@ Logger <- setRefClass("Logger",
                           record$levelname <- names(which(loglevels == record$level)[1])
                           if(is.na(record$levelname))
                             record$levelname <- paste("NumericLevel(", msglevel, ")", sep='')
-
                           ## cascade action in private method.
                           .logrecord(record)
                         },
@@ -92,7 +101,7 @@ Logger <- setRefClass("Logger",
                           else newLevel <- NA
                           level <<- newLevel
                         },
-                        
+
                         getLevel = function() level,
 
                         getHandler = function(handler) {
@@ -116,7 +125,7 @@ Logger <- setRefClass("Logger",
                             params <- list(...)
                             if(!'action' %in% names(params) && is.null(names(params)[[1]]))
                               assign('action', params[[1]], handlerEnv)
-                          } else  {
+                          } else {
                             ## first parameter is handler action, from which we extract the name
                             updateOptions.environment(handlerEnv, action=handler)
                             handlerName <- deparse(substitute(handler))
@@ -130,10 +139,10 @@ Logger <- setRefClass("Logger",
                           }
                         },
 
-                        finest = function(...) { log(loglevels['FINEST'], ...) },
-                        finer = function(...) { log(loglevels['FINER'], ...) },
-                        fine = function(...) { log(loglevels['FINE'], ...) },
-                        debug = function(...) { log(loglevels['DEBUG'], ...) },
+                        finest = function(...) { log(loglevels["FINEST"], ...) },
+                        finer = function(...) { log(loglevels["FINER"], ...) },
+                        fine = function(...) { log(loglevels["FINE"], ...) },
+                        debug = function(...) { log(loglevels["DEBUG"], ...) },
                         info = function(...) { log(loglevels["INFO"], ...) },
                         warn = function(...) { log(loglevels["WARN"], ...) },
                         error = function(...) { log(loglevels["ERROR"], ...) }))

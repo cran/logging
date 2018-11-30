@@ -1,5 +1,5 @@
 % File src/R/man/logging-internal.Rd
-% $Id: logging-internal.Rd 97 2011-09-21 14:23:04Z mariotomo $
+% $Id$
 
 \name{logging-internal}
 \alias{logging-internal}

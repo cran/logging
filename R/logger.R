@@ -1,8 +1,8 @@
-##***********************************************************************
-## this program is free software: you can redistribute it and/or
-## modify it under the terms of the GNU General Public License as
-## published by the Free Software Foundation, either version 3 of the
-## License, or (at your option) any later version.
+##
+## this is part of the R-logging package. the R-logging package is free
+## software: you can redistribute it and/or modify it under the terms of the
+## GNU General Public License as published by the Free Software Foundation,
+## either version 3 of the License, or (at your option) any later version.
 ##
 ## this program is distributed in the hope that it will be useful, but
 ## WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -13,25 +13,12 @@
 ## along with the nens libraray.  If not, see
 ## <http://www.gnu.org/licenses/>.
 ##
-## Copyright © 2009-2012 by Mario Frasca
-##
-## Library    : logging
-##
-## Purpose    : emulate the python standard logging package
-##
-## Usage      : library(logging)
-##
-## $Id: logger.R 103 2013-04-08 09:57:38Z mariotomo $
-##
-## initial programmer :  Mario Frasca
-## based on:             Brian Lee Yung Rowe's futile library
-##
-## initial date       :  20100105
+## Copyright (c) 2009-2013 by Mario Frasca
 ##
 
-## main log function, used by all other ones
+## internal main log function, used by all other ones
 ## (entry points for messages)
-levellog <- function(level, msg, ..., logger=getLogger())
+.levellog <- function(level, msg, ..., logger=getLogger())
 {
   if(is.character(logger))
     logger <- getLogger(logger)
@@ -39,49 +26,53 @@ levellog <- function(level, msg, ..., logger=getLogger())
   logger$log(level, msg, ...)
 }
 
+## exported main log function
+levellog <- function(level, msg, ..., logger=getLogger())
+  .levellog(level, msg, ..., logger=logger)
+
 ## using log
 logdebug <- function(msg, ..., logger='')
 {
-  levellog(loglevels[['DEBUG']], msg, ..., logger=logger)
+  .levellog(loglevels['DEBUG'], msg, ..., logger=logger)
   invisible()
 }
 
 logfinest <- function(msg, ..., logger='')
 {
-  levellog(loglevels['FINEST'], msg, ..., logger=logger)
+  .levellog(loglevels['FINEST'], msg, ..., logger=logger)
   invisible()
 }
 
 logfiner <- function(msg, ..., logger='')
 {
-  levellog(loglevels['FINER'], msg, ..., logger=logger)
+  .levellog(loglevels['FINER'], msg, ..., logger=logger)
   invisible()
 }
 
 logfine <- function(msg, ..., logger='')
 {
-  levellog(loglevels[['FINE']], msg, ..., logger=logger)
+  .levellog(loglevels['FINE'], msg, ..., logger=logger)
   invisible()
 }
 
 ## using log
 loginfo <- function(msg, ..., logger='')
 {
-  levellog(loglevels['INFO'], msg, ..., logger=logger)
+  .levellog(loglevels['INFO'], msg, ..., logger=logger)
   invisible()
 }
 
 ## using log
 logwarn <- function(msg, ..., logger='')
 {
-  levellog(loglevels['WARN'], msg, ..., logger=logger)
+  .levellog(loglevels['WARN'], msg, ..., logger=logger)
   invisible()
 }
 
 ## using log
 logerror <- function(msg, ..., logger='')
 {
-  levellog(loglevels['ERROR'], msg, ..., logger=logger)
+  .levellog(loglevels['ERROR'], msg, ..., logger=logger)
   invisible()
 }
 

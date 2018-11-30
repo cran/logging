@@ -1,5 +1,5 @@
 % File src/R/man/getLogger.Rd
-% $Id: getLogger.Rd 99 2012-04-18 06:16:45Z mariotomo $
+% $Id$
 
 \name{getLogger}
 \alias{getLogger}

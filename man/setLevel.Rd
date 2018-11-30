@@ -1,5 +1,5 @@
 % File src/R/man/setLevel.Rd
-% $Id: setLevel.Rd 35 2010-04-12 08:08:50Z mariotomo $
+% $Id$
 
 \name{setLevel}
 \alias{setLevel}

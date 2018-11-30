@@ -1,4 +1,5 @@
-# $Id: NAMESPACE 86 2011-08-03 13:16:48Z mariotomo $
+# $Id$
+importFrom(methods, new)
 export(loglevels,
        logfinest,
        logfiner,
@@ -16,7 +17,7 @@ export(loglevels,
        setLevel,
        writeToFile,
        writeToConsole,
-       updateOptions.environment,
        updateOptions,
        logReset
        )
+S3method(updateOptions, environment)

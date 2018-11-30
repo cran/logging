@@ -1,5 +1,5 @@
 % File src/R/man/logging-package.Rd
-% $Id: logging-package.Rd 103 2013-04-08 09:57:38Z mariotomo $
+% $Id: logging-package.Rd 39 2010-04-14 13:47:47Z mariotomo $
 
 \name{logging-package}
 \Rdversion{1.1}

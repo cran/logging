@@ -1,5 +1,5 @@
 % File src/R/man/levels.Rd
-% $Id: levels.Rd 96 2011-09-20 08:39:31Z mariotomo $
+% $Id$
 
 \name{loglevels}
 \alias{loglevels}

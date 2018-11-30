@@ -1,5 +1,5 @@
 % File src/R/man/getHandler.Rd
-% $Id: getHandler.Rd 95 2011-09-20 08:34:46Z mariotomo $
+% $Id$
 
 \name{getHandler}
 \alias{getHandler}
