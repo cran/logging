@@ -1,5 +1,5 @@
 Package: logging
-Version: 0.9-106
+Version: 0.9-107
 Title: R Logging Package
 Authors@R: c(
     person("Mario", "Frasca", email = "mariotomo@gmail.com", role = c("aut")),
@@ -18,9 +18,9 @@ Imports: methods
 Suggests: testthat, crayon
 RoxygenNote: 6.1.1
 NeedsCompilation: no
-Packaged: 2019-01-23 08:37:52 UTC; ws171913
+Packaged: 2019-02-10 10:59:02 UTC; ws171913
 Author: Mario Frasca [aut],
   Walerian Sokolowski [cre]
 Maintainer: Walerian Sokolowski <r-logging@wlogsolutions.com>
 Repository: CRAN
-Date/Publication: 2019-01-23 09:20:03 UTC
+Date/Publication: 2019-02-10 11:40:02 UTC

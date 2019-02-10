@@ -1,11 +1,11 @@
-4664e304a07b7b3dc968655ead6dfe12 *DESCRIPTION
-ce1a6d51a3b619c054cc4e6b31fe0a0d *NAMESPACE
+3cbe165aa767cbb44ce6dcb3a0bfbe97 *DESCRIPTION
+a80dce85e3d9704d266e58f0f4a074c5 *NAMESPACE
 e1a632f01bc57f3531767da14f493c87 *NEWS.md
-7b97afcc09d2b4e24a598b8ec2b6fc75 *R/logger.R
+8676ec78eb2a067c548270c827caa196 *R/logger.R
 e49f76f00ca6411a6e02df8df2d0506c *R/namedLevels.R
-93c29f6038abde082e9026ccb8a3f6b6 *R/oo.R
+77d9b3a82dd12845cd8537a4c444eeff *R/oo.R
 486c70bc92e9c4aa89c7be7b83eddd56 *R/updateOptions.R
-ec321dc0e3e5826beea531d46db9cc86 *R/utils.R
+14b50435acd8d8ab9c0fcd25814589a6 *R/utils.R
 ca505851d5c0649dd9f14a1fc3b756bf *R/zzz.R
 092bbc3a9b38edd9071bbfa0ba321590 *man/bootstrapping.Rd
 363b650f0bf8979e764e83fdfe3d78ba *man/getHandler.Rd
@@ -15,7 +15,9 @@ c671356b9ede8b516bd345588796a730 *man/inbuilt-actions.Rd
 aeb822d8f2b792408822fa0143528d63 *man/logging-entrypoints.Rd
 40602824c726ef3f2b2d26c5733b012e *man/logging-package.Rd
 9148058d0fc592892a4d02895a57a803 *man/loglevels.Rd
+a51604309104de96673615502c912d97 *man/resetMsgComposer.Rd
 5f97dd813745ecaf5a71121e7b362871 *man/setLevel.Rd
+42284bf7bd86d954e4629e6ac4919c13 *man/setMsgComposer.Rd
 c89e7939b75d470386bbfa7d492b4b71 *man/updateOptions.Rd
 100cc5d5a65b62f237c1167743b6b5f6 *tests/run_tests.R
 efc0db024732ee9cbbf0bc8fcbd83d60 *tests/testthat.R
