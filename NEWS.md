@@ -1,3 +1,13 @@
+# logging 0.10-108 (2019-07-14)
+  * issue #4: logged do not raise exception if formatting message contains %F
+    markers and not formatting arguments passed
+  * sub-loggers are created by default with loglevel inheritance from parent
+  * issue #4: message composer can be set directly for logger object
+
+# logging 0.9-107 (2019-02-09)
+  * issue #4: added possibility to set custom message composer for logger e.g.
+    based on glue formating.
+
 # logging 0.9-106 (2019-01-23)
   * issue #2 fixed: handling of sprintf limitation to 8192 characters in fmt.
     If no formatting parameters provided and fmt does not contain markers it

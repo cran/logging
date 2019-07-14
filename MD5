@@ -1,11 +1,11 @@
-3cbe165aa767cbb44ce6dcb3a0bfbe97 *DESCRIPTION
+a8d1146e0f751539a31b108f059b5954 *DESCRIPTION
 a80dce85e3d9704d266e58f0f4a074c5 *NAMESPACE
-e1a632f01bc57f3531767da14f493c87 *NEWS.md
-8676ec78eb2a067c548270c827caa196 *R/logger.R
+60a41839c06c596bee9f0637aa9f4feb *NEWS.md
+bf16b69f726cafe89cc216371917cca9 *R/logger.R
 e49f76f00ca6411a6e02df8df2d0506c *R/namedLevels.R
-77d9b3a82dd12845cd8537a4c444eeff *R/oo.R
-486c70bc92e9c4aa89c7be7b83eddd56 *R/updateOptions.R
-14b50435acd8d8ab9c0fcd25814589a6 *R/utils.R
+8b19a1a59016ccb6da83d8f8c0ab0d60 *R/oo.R
+70bc803dfba9a33f23d6542a26dbf55d *R/updateOptions.R
+98c27392cc3e2dd0447ce0f828e33295 *R/utils.R
 ca505851d5c0649dd9f14a1fc3b756bf *R/zzz.R
 092bbc3a9b38edd9071bbfa0ba321590 *man/bootstrapping.Rd
 363b650f0bf8979e764e83fdfe3d78ba *man/getHandler.Rd
@@ -23,5 +23,7 @@ c89e7939b75d470386bbfa7d492b4b71 *man/updateOptions.Rd
 efc0db024732ee9cbbf0bc8fcbd83d60 *tests/testthat.R
 c1a4499985819751ca10e95c9a13502a *tests/testthat/test.automatic-format.R
 6524e9b0c5267cc66441a19cc48cf02e *tests/testthat/test.data.interaction.R
-c0960df195a90b696429191dd25d33ae *tests/testthat/test.format-limitations.R
+b20183077adb74d9ebb9bb28041ab64a *tests/testthat/test.format-limitations.R
 1ba29522bec7fe30e1cf38b556fad607 *tests/testthat/test.handlers.R
+c25d9265fc73c3611b3688b84c43a8f3 *tests/testthat/test.level-inheritance.R
+cf2bafbcc813c74fc00804fa72a9fca8 *tests/testthat/test.msg-composer.R
