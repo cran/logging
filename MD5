@@ -1,11 +1,11 @@
-a8d1146e0f751539a31b108f059b5954 *DESCRIPTION
+69e252ae9bef110804410e68ea4af2f5 *DESCRIPTION
 a80dce85e3d9704d266e58f0f4a074c5 *NAMESPACE
 60a41839c06c596bee9f0637aa9f4feb *NEWS.md
 bf16b69f726cafe89cc216371917cca9 *R/logger.R
 e49f76f00ca6411a6e02df8df2d0506c *R/namedLevels.R
 8b19a1a59016ccb6da83d8f8c0ab0d60 *R/oo.R
 70bc803dfba9a33f23d6542a26dbf55d *R/updateOptions.R
-98c27392cc3e2dd0447ce0f828e33295 *R/utils.R
+60fee7681364bfadaf79556db0834ea7 *R/utils.R
 ca505851d5c0649dd9f14a1fc3b756bf *R/zzz.R
 092bbc3a9b38edd9071bbfa0ba321590 *man/bootstrapping.Rd
 363b650f0bf8979e764e83fdfe3d78ba *man/getHandler.Rd
@@ -13,7 +13,7 @@ ca505851d5c0649dd9f14a1fc3b756bf *R/zzz.R
 2a4612aaba896c5895a3211a00f4f009 *man/handlers-management.Rd
 c671356b9ede8b516bd345588796a730 *man/inbuilt-actions.Rd
 aeb822d8f2b792408822fa0143528d63 *man/logging-entrypoints.Rd
-40602824c726ef3f2b2d26c5733b012e *man/logging-package.Rd
+c47287493a0c685b89208f96bcda695a *man/logging-package.Rd
 9148058d0fc592892a4d02895a57a803 *man/loglevels.Rd
 a51604309104de96673615502c912d97 *man/resetMsgComposer.Rd
 5f97dd813745ecaf5a71121e7b362871 *man/setLevel.Rd
@@ -21,9 +21,10 @@ a51604309104de96673615502c912d97 *man/resetMsgComposer.Rd
 c89e7939b75d470386bbfa7d492b4b71 *man/updateOptions.Rd
 100cc5d5a65b62f237c1167743b6b5f6 *tests/run_tests.R
 efc0db024732ee9cbbf0bc8fcbd83d60 *tests/testthat.R
+37bdacc62f216fc3890124e5b15fcdba *tests/testthat/_problems/test.msg-composer-84.R
 c1a4499985819751ca10e95c9a13502a *tests/testthat/test.automatic-format.R
 6524e9b0c5267cc66441a19cc48cf02e *tests/testthat/test.data.interaction.R
 b20183077adb74d9ebb9bb28041ab64a *tests/testthat/test.format-limitations.R
 1ba29522bec7fe30e1cf38b556fad607 *tests/testthat/test.handlers.R
 c25d9265fc73c3611b3688b84c43a8f3 *tests/testthat/test.level-inheritance.R
-cf2bafbcc813c74fc00804fa72a9fca8 *tests/testthat/test.msg-composer.R
+de2ac8748325a9360a5e765c32bc7c9b *tests/testthat/test.msg-composer.R
